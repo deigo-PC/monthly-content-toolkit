@@ -1,9 +1,10 @@
 # Monthly Content Toolkit
 
-A complete AI-powered system for generating monthly content plans and
+A work-in-progress AI-powered system for generating monthly content plans and
 producing every deliverable type — carousel prompts, blog posts, infographic
-briefs, and more. Works with any AI coding agent that supports the skills
-system (OpenCode, Claude Code, Gemini CLI, Copilot CLI).
+briefs, and more. Under active development — expect frequent changes. Works
+with any AI coding agent that supports the skills system (OpenCode, Claude
+Code, Gemini CLI, Copilot CLI).
 
 ---
 
@@ -12,7 +13,7 @@ system (OpenCode, Claude Code, Gemini CLI, Copilot CLI).
 **Prerequisites:** [Node.js](https://nodejs.org/) (v18 or later) · PowerShell
 
 ```powershell
-git clone https://github.com/coordenadas-co/monthly-content-toolkit.git
+git clone https://github.com/deigo-PC/monthly-content-toolkit.git
 cd monthly-content-toolkit
 .\setup.ps1
 ```
@@ -164,7 +165,7 @@ reference it.
 
 ```powershell
 # First time
-git clone https://github.com/coordenadas-co/monthly-content-toolkit.git
+git clone https://github.com/deigo-PC/monthly-content-toolkit.git
 
 # Your monthly work
 cd monthly-content-toolkit
