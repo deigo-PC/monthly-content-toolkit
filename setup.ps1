@@ -1,4 +1,4 @@
-# Monthly Content Toolkit — Setup Script
+# Coordenadas Content System — Setup Script
 # Run this once after cloning the repo.
 
 $Script:ErrorActionPreference = "Stop"
@@ -8,7 +8,7 @@ $Yellow = "Yellow"
 $Red    = "Red"
 
 Write-Host "========================================" -ForegroundColor $Cyan
-Write-Host "  Monthly Content Toolkit — Setup"        -ForegroundColor $Cyan
+Write-Host "  Coordenadas Content System — Setup"        -ForegroundColor $Cyan
 Write-Host "========================================" -ForegroundColor $Cyan
 Write-Host ""
 
@@ -65,7 +65,7 @@ Write-Host "    • infographic-brief-generator — Design briefs" -ForegroundCo
 Write-Host ""
 Write-Host "  Next steps:" -ForegroundColor $Yellow
 Write-Host "    1. Copy Brands\_template to create a new brand"
-Write-Host "    2. Fill in the brand context (.agents/product-marketing.md)"
+Write-Host "    2. Fill in the brand context (AGENT.md, BrandKit/brand_guide.md)"
 Write-Host "    3. Ask your AI coding agent:"
 Write-Host "       'Generate the content plan for July'"
 Write-Host ""

@@ -1,19 +1,23 @@
 # Monthly Content Workflow
 
-Complete step-by-step pipeline for running a month of content production.
+Step-by-step pipeline for running a month of content production using the
+existing 4 skills. Updated paths reflect the ICM folder structure.
 
 ---
 
 ## Prerequisites
 
-- Repo cloned and setup.ps1 run (see README.md)
-- Brand context exists in `Brands/{ClientName}/`
-- If first month for this brand: agent has run "Set up product marketing
-  context for [ClientName]"
+- Repo cloned and `setup.ps1` run (see README.md)
+- Brand template copied: `Copy-Item -Path "Brands\_template" -Destination "Brands\[ClientName]" -Recurse`
+- `AGENT.md` filled in (identity, audience, positioning, credentials)
+- `BrandKit/brand_guide.md` created
+- If first month: agent reads `AGENT.md` for brand context
 
 ---
 
-## Step 1 — Generate the Content Plan
+## Stage 1 — Generate the Content Plan
+
+**Folder:** `Monthly_Cycles/[NN]-[MMMYY]/01_content_plan/`
 
 In your AI coding agent:
 
@@ -21,86 +25,82 @@ In your AI coding agent:
 
 The agent will:
 1. Ask about campaign angle, tone, deliverable mix
-2. Load brand context from `Brands/{ClientName}/`
+2. Load brand context from `AGENT.md`, `brand_guide.md`, `_knowledgebase/`
 3. Ask for **language** (English or Spanish) if not specified
-4. Generate a full monthly plan with all deliverable types
-5. Deliver a .md file for review
-6. You approve → agent generates .html (dark/light toggle, sidebar nav,
+4. Write `CYCLE_CONTEXT.md` with the month's direction
+5. Generate a full monthly plan
+6. Deliver .md for review at `01_content_plan/output/content-plan.md`
+7. You approve → agent generates .html (dark/light toggle, sidebar nav,
    collapsible weeks, filter chips, search, copy-to-clipboard)
 
-**Output:** `output/[Brand]_Content_Plan_[MONTH]_[YEAR].html`
+**Output:** `Monthly_Cycles/[NN]-[MMMYY]/01_content_plan/output/content-plan.html`
 
-**If you already ran last month:** the agent will ask if you want to use the
-saved config. Say yes to skip the direction interview.
+**Saved config:** stored at `Brands/[ClientName]/content-plan-config.json`
+(not inside `.agents/`). Say yes when asked — next month is one command.
 
 ---
 
-## Step 2 — Generate Carousel Image Prompts
+## Stage 2 — Generate Carousel Image Prompts
+
+**Folder:** `Monthly_Cycles/[NN]-[MMMYY]/02_prompts_and_copy/`
 
 > "Now generate the carousel image prompts"
 
-The agent will:
-1. Extract carousel entries from the content plan
-2. Read the brand guide for visual rules (loads `image` skill)
-3. Load `marketing-psychology` skill for slide-role psychology
-4. Generate one prompt per slide (preamble + 7-section creative brief)
-5. Deliver .md for review
-6. You approve → agent generates .html (sidebar nav, copy buttons per slide,
-   role-colored badges)
+1. Extracts carousel entries from `01_content_plan/output/content-plan.md`
+2. Loads `image` + `marketing-psychology` skills
+3. Generates one prompt per slide
+4. .md produced for review, you approve → .html generated
 
-**Output:** `output/[Brand]_Carousel_Prompts_[MONTH]_[YEAR].html`
+**Output:** `02_prompts_and_copy/output/carousel-prompts.html`
 
 ---
 
-## Step 3 — Write Blog Posts
+## Stage 3 — Write Blog Posts
+
+**Folder:** `Monthly_Cycles/[NN]-[MMMYY]/02_prompts_and_copy/`
 
 > "Now write the blog posts"
 
-The agent will:
-1. Extract blog entries from the content plan
-2. Read knowledgebase and sitemap for facts and internal links
-3. Load `copywriting`, `seo-audit`, `ai-seo` skills
-4. Write full SEO-optimized posts (metadata + body + CTA + FAQ)
-5. Load `claims-policy.md` to verify no invented facts
-6. Deliver .md for review
-7. You approve → agent generates .html (sidebar nav, "Copy post" button per
-   article, metadata panel, QA reference box)
+1. Extracts blog entries from `01_content_plan/output/content-plan.md`
+2. Loads `copywriting`, `seo-audit`, `ai-seo` skills
+3. Reads `_knowledgebase/` and sitemap for facts and internal links
+4. Verifies claims against `claims-policy.md`
+5. .md produced for review, you approve → .html generated
 
-**Output:** `output/[Brand]_Blog_Posts_[MONTH]_[YEAR].html`
+**Output:** `02_prompts_and_copy/output/blog-posts.html`
 
 ---
 
-## Step 4 — Generate Infographic Design Briefs
+## Stage 4 — Generate Infographic Design Briefs
+
+**Folder:** `Monthly_Cycles/[NN]-[MMMYY]/03_infographic_briefs/`
 
 > "Now generate the infographic design briefs"
 
-The agent will:
-1. Extract infographic entries from the content plan
-2. Read brand kit for visual direction (loads `image` skill)
-3. Generate structured design brief: dimensions, hierarchy, color system,
-   typography, data presentation, layout
-4. Deliver .md for review
-5. You approve → agent generates .html (sidebar nav, color swatches,
-   copy-to-clipboard)
+1. Extracts infographic entries from `01_content_plan/output/content-plan.md`
+2. Loads `image` skill, reads `BrandKit/`
+3. Produces structured design brief (dimensions, hierarchy, color, typography,
+   data presentation, layout)
+4. .md produced for review, you approve → .html generated
 
-**Output:** `output/[Brand]_Infographic_Briefs_[MONTH]_[YEAR].html`
+**Output:** `03_infographic_briefs/output/infographic-briefs.html`
 
 ---
 
 ## Quick Reference
 
-| Step | Agent command | Loaded skills | Output |
+| Stage | Command | Skills loaded | Output folder |
 |---|---|---|---|
-| Content Plan | "Generate the content plan" | content-strategy, copywriting, marketing-psychology, social, ad-creative, image | .md → .html |
-| Carousel Prompts | "Generate the carousel prompts" | image, marketing-psychology | .md → .html |
-| Blog Posts | "Write the blog posts" | copywriting, seo-audit, ai-seo | .md → .html |
-| Infographic Briefs | "Generate the infographic briefs" | image | .md → .html |
+| Content Plan | "Generate the content plan" | content-strategy, copywriting, marketing-psychology, social, ad-creative, image | `01_content_plan/output/` |
+| Carousel Prompts | "Generate the carousel prompts" | image, marketing-psychology | `02_prompts_and_copy/output/` |
+| Blog Posts | "Write the blog posts" | copywriting, seo-audit, ai-seo | `02_prompts_and_copy/output/` |
+| Infographic Briefs | "Generate the infographic briefs" | image | `03_infographic_briefs/output/` |
 
 ## Tips
 
-- **Save month configs** — when the agent asks at the end, say yes. Next month
-  is one command.
-- **Review .md files first** — the HTML is generated after your approval.
-- **Flag gaps early** — missing brand info, pricing, or sitemaps are easier
-  to fix before generation.
-- **Run steps sequentially** — each step reads the previous step's output.
+- **Review .md files before approving HTML generation** — the HTML is the
+  final deliverable
+- **Save configs** — when asked at the end of Step 1, say yes
+- **Sequential order** — each stage reads the previous stage's output
+- **Stages 2 and 3 share a folder** (both are prompts & copy) and can run in
+  parallel

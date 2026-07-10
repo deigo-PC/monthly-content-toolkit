@@ -25,27 +25,19 @@ generation and design brief skills to produce on-brand visuals.
 
 ```markdown
 # [Brand] Visual Guide
+```
 
-## Color Palette
-- Primary: #HEX
-- Secondary: #HEX
-- Accent: #HEX
-- Background: #HEX
-- Text: #HEX
+See `design_sheets/MAIN.md` for the structured design-sheet format. See
+`AGENT.md` for brand identity fields (positioning, audience, voice).
 
-## Typography
-- Headline font: [Name]
-- Body font: [Name]
-- Weights used: [e.g., Regular 400, Bold 700]
+## Directory layout
 
-## Logo
-- Full logo: [file path]
-- Icon: [file path]
-- Clear space: [minimum padding around logo]
-
-## Imagery Style
-- Photography style: [e.g., bright lifestyle, moody editorial, clean product]
-- Illustration style: [if applicable]
-- Dos: [what works visually]
-- Don'ts: [what to avoid]
+```
+BrandKit/
+├── brand_guide.md       # Visual identity: colors, fonts, imagery style
+├── logos/               # Full logo, icon-only, wordmark — SVG / PNG / AI
+├── fonts/               # Brand typefaces (licensed files or links)
+└── design_sheets/
+    ├── MAIN.md          # Primary visual reference: logo, colors, fonts, generic look/feel
+    └── negative_prompt_block.md  # Living list of exclusions for image generation
 ```
