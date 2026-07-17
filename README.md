@@ -21,6 +21,7 @@ via n8n/Hermes, with human approval preserved at the PM review gate.
 | `carousel-prompt-generator` | Per-slide AI image prompts (.md → .html) | ✅ Working |
 | `blog-post-generator` | Full SEO blog posts (.md → .html) | ✅ Working |
 | `infographic-brief-generator` | Design briefs for infographics (.md → .html) | ✅ Working |
+| `landing-page-generator` (`monthly-drop-landing-page`) | Deployed Vercel landing page (TanStack) | ✅ Working |
 
 **Existing externally, not yet ported into this repo:**
 
@@ -28,7 +29,6 @@ via n8n/Hermes, with human approval preserved at the PM review gate.
 |---|---|
 | `marketing-brain` | 8-phase pipeline → Marketing Brain HTML + Strategy Doc |
 | `hl-subaccount-setup` | GoHighLevel bot/pipeline config |
-| `monthly-drop-landing-page` | Deployed Vercel landing page (TanStack) |
 | `design-sheet-generator` | Per-persona visual reference sheets |
 | `ai-video-prompt-writer` | Two-stage AI video prompt pipeline |
 | `carousel-slide-processor` | Image post-processing (resize, logo, naming) |
@@ -142,6 +142,11 @@ In your AI coding agent:
    → Reads content plan + brand kit
    → Produces infographic-briefs.md → infographic-briefs.html
    → Output: `Monthly_Cycles/[NN]-[MMMYY]/03_infographic_briefs/output/`
+
+5. **"Build the landing page for [ClientName]"**
+   → Requires images generated and named per SOPs
+   → Creates TanStack project, deploys to Vercel
+   → Output: Public Vercel URL
 
 ---
 
