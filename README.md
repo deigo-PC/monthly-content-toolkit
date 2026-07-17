@@ -118,6 +118,31 @@ The setup script installs 46 marketing skills from
 as a dependency — content strategy, copywriting, SEO, psychology, ads, and
 more — and verifies all 5 custom skills are in place.
 
+### Standardizing Your Environment
+
+Every team machine should match this verified configuration.
+After cloning, run through this checklist:
+
+| Component | What | How |
+|---|---|---|
+| 46 marketing skills | `coreyhaines31/marketingskills` | `npx skills add coreyhaines31/marketingskills --global -y` |
+| 5 custom skills | Auto-discovered from `.agents/skills/` | `.\setup.ps1` (verifies them) |
+| Template dependencies | `node_modules/` inside `monthly-drop-landing-page/template/` | `Set-Location ".agents\skills\monthly-drop-landing-page\template"; npm install` |
+| GitHub CLI | `gh` v2.96+ | `winget install GitHub.cli`, then `gh auth login` |
+| Vercel | GitHub connected in Vercel | `vercel.com/settings/git` → Add GitHub Integration |
+
+To verify everything is working:
+
+```powershell
+.\setup.ps1
+gh auth status
+Set-Location ".agents\skills\monthly-drop-landing-page\template"
+npm run build
+```
+
+If a teammate's setup behaves differently, this is the baseline to
+compare against.
+
 ### Adding a Brand
 
 ```powershell
