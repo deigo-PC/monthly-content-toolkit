@@ -148,6 +148,11 @@ In your AI coding agent:
    → Creates TanStack project, deploys to Vercel
    → Output: Public Vercel URL
 
+   **Prerequisites for step 5:** `gh` CLI authenticated to GitHub
+   (`gh auth login`) and a Vercel account connected to GitHub
+   (vercel.com → Settings → Git → Add GitHub Integration). Run
+   `.\setup.ps1` to verify — it checks and guides setup.
+
 ---
 
 ## Roadmap

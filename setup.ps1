@@ -34,7 +34,8 @@ $expected = @(
     "content-plan-generator",
     "carousel-prompt-generator",
     "blog-post-generator",
-    "infographic-brief-generator"
+    "infographic-brief-generator",
+    "monthly-drop-landing-page"
 )
 $allFound = $true
 
@@ -56,12 +57,13 @@ if (-not $allFound) {
 # ── Step 3: Summary ──
 Write-Host "`n[3/3] Setup complete!" -ForegroundColor $Green
 Write-Host ""
-Write-Host "  Skills installed: 4 custom + 46 marketing" -ForegroundColor $Cyan
+Write-Host "  Skills installed: 5 custom + 46 marketing" -ForegroundColor $Cyan
 Write-Host "  Custom skills:" -ForegroundColor $Cyan
-Write-Host "    • content-plan-generator     — Monthly content plan" -ForegroundColor $Cyan
-Write-Host "    • carousel-prompt-generator  — Carousel image prompts" -ForegroundColor $Cyan
-Write-Host "    • blog-post-generator       — SEO blog posts" -ForegroundColor $Cyan
-Write-Host "    • infographic-brief-generator — Design briefs" -ForegroundColor $Cyan
+Write-Host "    • content-plan-generator        — Monthly content plan" -ForegroundColor $Cyan
+Write-Host "    • carousel-prompt-generator     — Carousel image prompts" -ForegroundColor $Cyan
+Write-Host "    • blog-post-generator          — SEO blog posts" -ForegroundColor $Cyan
+Write-Host "    • infographic-brief-generator  — Design briefs" -ForegroundColor $Cyan
+Write-Host "    • monthly-drop-landing-page    — Deployed Vercel landing page" -ForegroundColor $Cyan
 Write-Host ""
 Write-Host "  Next steps:" -ForegroundColor $Yellow
 Write-Host "    1. Copy Brands\_template to create a new brand"
@@ -80,7 +82,7 @@ try {
         }
     }
     if ($customFound) {
-        Write-Host "  All 4 custom skills visible in global skills list." -ForegroundColor $Green
+        Write-Host "  All 5 custom skills visible in global skills list." -ForegroundColor $Green
     } else {
         Write-Host "  Note: verifying skills in npx list — if you see 'skills' is not recognized, install the CLI:" -ForegroundColor $Yellow
         Write-Host "    npm install -g @anthropic-ai/skills" -ForegroundColor $Yellow

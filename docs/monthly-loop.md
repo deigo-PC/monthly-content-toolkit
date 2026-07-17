@@ -57,8 +57,9 @@ scratch.
 
 ## Per-skill configs
 
-The `carousel-prompt-generator`, `blog-post-generator`, and
-`infographic-brief-generator` skills do not save their own configs. They
+The `carousel-prompt-generator`, `blog-post-generator`,
+`infographic-brief-generator`, and `monthly-drop-landing-page` skills do not
+save their own configs. They
 always read fresh from:
 - The current month's content plan (Stage 1 output)
 - `BrandKit/brand_guide.md`
