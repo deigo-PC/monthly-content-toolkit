@@ -17,7 +17,7 @@ Write-Host "[1/3] Installing marketing skills from coreyhaines31/marketingskills
 Write-Host "      (This may take a minute the first time)" -ForegroundColor $Yellow
 
 try {
-    npx skills add coreyhaines31/marketingskills --global -y 2>&1 | Out-Null
+    npx skills add coreyhaines31/marketingskills -y 2>&1 | Out-Null
     Write-Host "  ✔ Marketing skills installed" -ForegroundColor $Green
 } catch {
     Write-Host "  ✘ Failed to install marketing skills" -ForegroundColor $Red

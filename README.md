@@ -118,15 +118,17 @@ The setup script installs 46 marketing skills from
 as a dependency — content strategy, copywriting, SEO, psychology, ads, and
 more — and verifies all 5 custom skills are in place.
 
-### Standardizing Your Environment
+### Standardizing Your Environment (OpenCode)
 
-Every team machine should match this verified configuration.
-After cloning, run through this checklist:
+This system uses the **OpenCode** skills runtime. All skills install
+for OpenCode (not globally) — they auto-discover from `.agents/skills/`
+when you run OpenCode from the repo root. After cloning, run through
+this checklist:
 
 | Component | What | How |
 |---|---|---|
-| 46 marketing skills | `coreyhaines31/marketingskills` | `npx skills add coreyhaines31/marketingskills --global -y` |
-| 5 custom skills | Auto-discovered from `.agents/skills/` | `.\setup.ps1` (verifies them) |
+| 46 marketing skills | `coreyhaines31/marketingskills` | `npx skills add coreyhaines31/marketingskills -y` (OpenCode-only) |
+| 5 custom skills | Auto-discovered from `.agents/skills/` | `.\setup.ps1` (verifies they're in place) |
 | Template dependencies | `node_modules/` inside `monthly-drop-landing-page/template/` | `Set-Location ".agents\skills\monthly-drop-landing-page\template"; npm install` |
 | GitHub CLI | `gh` v2.96+ | `winget install GitHub.cli`, then `gh auth login` |
 | Vercel | GitHub connected in Vercel | `vercel.com/settings/git` → Add GitHub Integration |
