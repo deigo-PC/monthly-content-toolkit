@@ -23,6 +23,11 @@ via n8n/Hermes, with human approval preserved at the PM review gate.
 | `infographic-brief-generator` | Design briefs for infographics (.md → .html) | ✅ Working |
 | `landing-page-generator` (`monthly-drop-landing-page`) | Deployed Vercel landing page (TanStack) | ✅ Working |
 
+Skills below come from the
+[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
+catalog — installed globally by `setup.ps1`, available on any machine that
+runs it.
+
 **Existing externally, not yet ported into this repo:**
 
 | Skill | Status |
@@ -107,6 +112,11 @@ git clone https://github.com/deigo-PC/monthly-content-toolkit.git
 cd monthly-content-toolkit
 .\setup.ps1
 ```
+
+The setup script installs 46 marketing skills from
+[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
+as a dependency — content strategy, copywriting, SEO, psychology, ads, and
+more — and verifies all 5 custom skills are in place.
 
 ### Adding a Brand
 
