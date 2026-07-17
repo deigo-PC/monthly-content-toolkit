@@ -5,8 +5,7 @@ producing every deliverable type — carousel prompts, blog posts, infographic
 briefs, images, landing pages, and performance reports. Under active
 development — expect frequent changes.
 
-Works with any AI coding agent that supports the skills system (OpenCode,
-Claude Code, Gemini CLI, Copilot CLI). Designed to run unattended on a VPS
+Uses the OpenCode skills system. Designed to run unattended on a VPS
 via n8n/Hermes, with human approval preserved at the PM review gate.
 
 ---
@@ -25,8 +24,7 @@ via n8n/Hermes, with human approval preserved at the PM review gate.
 
 Skills below come from the
 [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
-catalog — installed globally by `setup.ps1`, available on any machine that
-runs it.
+catalog — installed into OpenCode by `setup.ps1`.
 
 **Existing externally, not yet ported into this repo:**
 
@@ -105,60 +103,68 @@ coordenadas-content-system/
 
 ## How to Use Today
 
-### Quick Start
+### Quick Start (one-time bootstrap)
+
+This repo is a bootstrap — you only need it once to install the skills
+into OpenCode. After setup, delete the repo — all skills persist in
+`~\.config\opencode\skills\`.
 
 ```powershell
 git clone https://github.com/deigo-PC/monthly-content-toolkit.git
 cd monthly-content-toolkit
 .\setup.ps1
+cd ..
+Remove-Item -Recurse -Force monthly-content-toolkit
 ```
 
-The setup script installs 46 marketing skills from
-[coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)
-as a dependency — content strategy, copywriting, SEO, psychology, ads, and
-more — and verifies all 5 custom skills are in place.
+What `setup.ps1` does:
 
-### Standardizing Your Environment (OpenCode)
+1. Installs 46 marketing skills (`coreyhaines31/marketingskills`) via global npx
+2. Moves them from global to OpenCode's directory (`~\.config\opencode\skills\`)
+3. Copies the 5 custom skills from the repo into OpenCode
+4. Installs the TanStack template dependencies for the landing page skill
+5. Deletes the global skills directory — everything now lives in OpenCode
 
-This system uses the **OpenCode** skills runtime. All skills install
-for OpenCode (not globally) — they auto-discover from `.agents/skills/`
-when you run OpenCode from the repo root. After cloning, run through
-this checklist:
-
-| Component | What | How |
-|---|---|---|
-| 46 marketing skills | `coreyhaines31/marketingskills` | `npx skills add coreyhaines31/marketingskills -y` (OpenCode-only) |
-| 5 custom skills | Auto-discovered from `.agents/skills/` | `.\setup.ps1` (verifies they're in place) |
-| Template dependencies | `node_modules/` inside `monthly-drop-landing-page/template/` | `Set-Location ".agents\skills\monthly-drop-landing-page\template"; npm install` |
-| GitHub CLI | `gh` v2.96+ | `winget install GitHub.cli`, then `gh auth login` |
-| Vercel | GitHub connected in Vercel | `vercel.com/settings/git` → Add GitHub Integration |
-
-To verify everything is working:
+### Verifying the installation
 
 ```powershell
-.\setup.ps1
-gh auth status
-Set-Location ".agents\skills\monthly-drop-landing-page\template"
-npm run build
+Get-ChildItem "$env:USERPROFILE\.config\opencode\skills" | Select-Object Name
 ```
 
-If a teammate's setup behaves differently, this is the baseline to
-compare against.
+You should see the 5 custom skills plus 46 marketing skill directories.
+OpenCode auto-discovers skills from this directory on launch.
+
+### Prerequisites for the landing page step
+
+| Tool | How |
+|---|---|
+| GitHub CLI | `winget install GitHub.cli`, then `gh auth login` |
+| Vercel | GitHub connected in Vercel (`vercel.com/settings/git` → Add GitHub Integration) |
 
 ### Adding a Brand
+
+If you still have the repo cloned:
 
 ```powershell
 Copy-Item -Path "Brands\_template" -Destination "Brands\NewClient" -Recurse
 ```
 
-Then fill in:
+If you deleted the repo, re-clone it temporarily, copy the template,
+then delete it again. Or in OpenCode just say:
+
+> "Set up a new brand for [Name]"
+
+OpenCode will prompt for the information it needs (audience, positioning,
+brand guide, etc.) and create the brand context.
+
+Fill in the template files:
 - `AGENT.md` — brand identity, audience, positioning, credentials
 - `BrandKit/brand_guide.md` — visual identity
 - `_knowledgebase/` — strategy docs, buyer psychology, FAQs, sitemap
 
 ### Running a Monthly Cycle
 
-In your AI coding agent:
+In OpenCode:
 
 1. **"Generate the content plan for [month] for [ClientName]"**
    → Reads `AGENT.md`, brand guide, knowledgebase
